@@ -1,0 +1,22 @@
+{
+    "require": {
+      "slim/slim": "3.0",
+      "illuminate/database": "*",
+      "ext-json": "*",
+      "vlucas/phpdotenv": "^3.1",
+      "ext-curl": "*",
+      "firebase/php-jwt": "^5.0"
+    },
+  
+    "authors": [
+      {
+        "name": "Camilo Alaniz",
+        "email": "kmilo93sd@gmail.com"
+      }
+    ],
+    "autoload": {
+      "psr-4": {
+        "Recluit\\": "src/"
+      }
+    }
+  }
