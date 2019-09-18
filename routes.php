@@ -1,12 +1,6 @@
 <?php
 
-$app->get('/', function (){
+$app->get('/', 'IndexApiController:index');
 
-    print_r(
-        json_encode(
-            [
-                "status" => true
-            ]
-        )
-    );
-});
+
+
