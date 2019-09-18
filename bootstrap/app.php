@@ -7,7 +7,7 @@ $app = new Slim\App([
 		'displayErrorDetails' => true,
 		
 		/*
-			ELOQUENT ENVIROMENT CONFIGURATION
+			ELOQUENT ENVIRONMENT CONFIGURATION
  		*/
 		'db' => [
 			'driver' => DB_CONFIG['driver'],
@@ -37,6 +37,6 @@ $container['db'] = function($container) use ($capsule){
 };
 
 
-require __DIR__ . '/../src/Infrastructure/Controllers/Slim/Base/ControllersContainer.php';
+require __DIR__ . '/../src/Common/Infraestructure/Http/Controller/Base/ControllersContainer.php';
 
 require __DIR__ . '/../routes.php';

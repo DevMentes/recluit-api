@@ -1,6 +1,6 @@
 <?php 
 
-namespace Recluit\Infrastructure\Controllers\Slim\Base;
+namespace Recluit\Common\Infraestructure\Http\Controller\Base;
 
 class Controller
 {

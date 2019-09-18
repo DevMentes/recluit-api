@@ -1,8 +1,8 @@
 <?php
 
-namespace Recluit\Infrastructure\Controllers\Slim;
+namespace Recluit\Common\Infraestructure\Http\Controller;
 
-use Recluit\Infrastructure\Controllers\Slim\Base\Controller;
+use Recluit\Common\Infraestructure\Http\Controller\Base\Controller;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
