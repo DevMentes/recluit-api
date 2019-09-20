@@ -6,7 +6,7 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use Recluit\Security\Application\Services\SignInUserService;
 use Recluit\Security\Application\Requests\SignInUserRequest;
-use Recluit\Security\Infraestructure\Jwt\JsonWebTokenGenerator;
+use Recluit\Common\Jwt\JsonWebTokenGenerator;
 use Recluit\Common\Infraestructure\Http\Controller\Base\Controller;
 use Recluit\Security\Infraestructure\Persistence\Repositories\EloquentUserRepository;
 

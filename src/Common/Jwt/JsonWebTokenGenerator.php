@@ -1,6 +1,6 @@
 <?php
 
-namespace Recluit\Security\Infraestructure\Jwt;
+namespace Recluit\Common\Jwt;
 
 use Firebase\JWT\JWT;
 
