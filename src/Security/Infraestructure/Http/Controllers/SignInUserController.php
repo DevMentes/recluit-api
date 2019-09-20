@@ -37,10 +37,8 @@ class SignInUserController extends Controller
 
             return $response->withJson([
                 "token" => JsonWebTokenGenerator::generate([
-                    "user" => [
-                        "id" => $authUser->id(),
-                        "email" => $authUser->email()
-                    ]
+                    "id" => $authUser->id(),
+                    "email" => $authUser->email()
                 ])
             ]);
         }catch (\Exception $exception){

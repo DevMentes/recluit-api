@@ -41,6 +41,10 @@ class SignUpUserController extends Controller
             return $response->withJson([
                 "error" => $exception->getMessage()
             ], 400);
+        } catch (\Exception $exception) {
+            return $response->withJson([
+                "error" => $exception->getMessage()
+            ], 400);
         }
     }
 }
