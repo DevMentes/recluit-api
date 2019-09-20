@@ -16,14 +16,14 @@ services:
       image: postgres:11-alpine
       restart: always
       environment:
-        POSTGRES_DB: ${database_name}
-        POSTGRES_USER: ${database_user}
-        POSTGRES_PASSWORD: ${database_password}
+        POSTGRES_DB: ${DATABASE}
+        POSTGRES_USER: ${DB_USER}
+        POSTGRES_PASSWORD: ${DB_PASSWORD}
       ports:
         - '5432:5432'
       volumes:
         - ./pgdata:/var/lib/postgresql/data
-        - ./database/atenas.sql:/docker-entrypoint-initdb.d/init.sql
+        - ./database/recluit.sql:/docker-entrypoint-initdb.d/init.sql
 
     php:
       build:
@@ -33,11 +33,11 @@ services:
       volumes:
         - .:/app
       environment:
-        DB_HOST: postgresql
-        DB_USER: admin
-        DB_PASSWORD: '00000000'
-        DB_NAME: atenas
-        DB_PORT: '5000'
+        DB_HOST: ${DB_HOST}
+        DB_USER: ${DB_USER}
+        DB_PASSWORD: ${DB_PASSWORD}
+        DB_NAME: ${DATABASE}
+        DB_PORT: ${DB_PORT}
       links:
         - postgresql
       depends_on:

@@ -1,8 +1,8 @@
 <?php
 
-namespace Recluit\Infrastructure\Uuid;
+namespace Recluit\Common\Uuid;
 
-class UuidGenerator
+class UUID
 {
     public static function generate(): string
     {

@@ -21,6 +21,6 @@ RUN docker-php-ext-install sockets mbstring bcmath pdo pgsql pdo_pgsql
 
 COPY . /var/www/html/app
 COPY --from=vendor ./app/vendor/ /var/www/html/app/vendor/
-COPY ./docker/php-fpm/php-ini-overrides.ini /etc/php/7.0/fpm/conf.d/99-overrides.ini
+COPY ./docker/php/php-ini-overrides.ini /etc/php/7.0/fpm/conf.d/99-overrides.ini
 
 EXPOSE 80
