@@ -2,13 +2,13 @@
 
 namespace Recluit\Security\Infraestructure\Http\Controllers;
 
+use Recluit\Common\Infraestructure\Http\Controller\Base\Controller;
+use Recluit\Common\Jwt\JsonWebTokenGenerator;
+use Recluit\Security\Application\Requests\SignInUserRequest;
+use Recluit\Security\Application\Services\SignInUserService;
+use Recluit\Security\Infraestructure\Persistence\Repositories\EloquentUserRepository;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use Recluit\Security\Application\Services\SignInUserService;
-use Recluit\Security\Application\Requests\SignInUserRequest;
-use Recluit\Common\Jwt\JsonWebTokenGenerator;
-use Recluit\Common\Infraestructure\Http\Controller\Base\Controller;
-use Recluit\Security\Infraestructure\Persistence\Repositories\EloquentUserRepository;
 
 class SignInUserController extends Controller
 {
@@ -32,7 +32,7 @@ class SignInUserController extends Controller
 
         $service = new SignInUserService(new EloquentUserRepository());
 
-        try{
+        try {
             $authUser = $service->execute(new SignInUserRequest($email, $password));
 
             return $response->withJson([
@@ -41,7 +41,7 @@ class SignInUserController extends Controller
                     "email" => $authUser->email()
                 ])
             ]);
-        }catch (\Exception $exception){
+        } catch (\Exception $exception) {
             return $response->withJson([
                 "error" => $exception->getMessage()
             ], 400);

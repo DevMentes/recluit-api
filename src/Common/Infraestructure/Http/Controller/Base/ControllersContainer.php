@@ -1,11 +1,11 @@
 <?php
 
-use \Recluit\Common\Infraestructure\Http\Controller\IndexApiController;
-use Recluit\Security\Infraestructure\Http\Controllers\SignInUserController;
+use Recluit\Common\Infraestructure\Http\Controller\IndexApiController;
 use Recluit\Postulation\Infraestructure\Http\Controllers\CreatePostulationController;
+use Recluit\Security\Infraestructure\Http\Controllers\SignInUserController;
 use Recluit\Security\Infraestructure\Http\Controllers\SignUpUserController;
 
-$container['IndexApiController'] = function ($container){
+$container['IndexApiController'] = function ($container) {
     return new IndexApiController($container);
 };
 

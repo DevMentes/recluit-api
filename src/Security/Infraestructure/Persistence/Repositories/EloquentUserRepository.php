@@ -9,7 +9,7 @@ use Recluit\Security\Infraestructure\Persistence\Models\EloquentUser;
 class EloquentUserRepository implements UserRepository
 {
 
-    public function byEmail(string $email):? User
+    public function byEmail(string $email): ?User
     {
         $foundUser = EloquentUser::where("email", $email)->first();
 

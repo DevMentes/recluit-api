@@ -2,13 +2,13 @@
 
 namespace Recluit\Security\Infraestructure\Http\Controllers;
 
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Recluit\Common\Infraestructure\Http\Controller\Base\Controller;
 use Recluit\Common\Uuid\UUID;
 use Recluit\Security\Application\Requests\SignUpUserRequest;
 use Recluit\Security\Application\Services\SignUpUserService;
-use Recluit\Common\Infraestructure\Http\Controller\Base\Controller;
 use Recluit\Security\Infraestructure\Persistence\Repositories\EloquentUserRepository;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 class SignUpUserController extends Controller
 {
@@ -27,21 +27,18 @@ class SignUpUserController extends Controller
             ]);
         }
 
+        $id = UUID::generate();
         $email = $body["email"];
         $password = $body["password"];
 
         $service = new SignUpUserService(new EloquentUserRepository());
 
-        try{
-            $service->execute(new SignUpUserRequest(UUID::generate(),$email, $password));
+        try {
+            $service->execute(new SignUpUserRequest($id, $email, $password));
             return $response->withJson([
-               "message" => "user was registered successfully"
+                "message" => "user was registered successfully"
             ]);
-        }catch (\DomainException $exception) {
-            return $response->withJson([
-                "error" => $exception->getMessage()
-            ], 400);
-        } catch (\Exception $exception) {
+        } catch (\DomainException $exception) {
             return $response->withJson([
                 "error" => $exception->getMessage()
             ], 400);

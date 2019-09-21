@@ -16,11 +16,11 @@ class SignInUserRequest
 
     public function email(): string
     {
-        return  $this->email;
+        return $this->email;
     }
 
     public function password(): string
     {
-        return  $this->password;
+        return $this->password;
     }
 }

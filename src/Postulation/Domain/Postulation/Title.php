@@ -14,7 +14,8 @@ class Title
         $this->title = $this->isValidOrFail($title);
     }
 
-    private function isValidOrFail(string $title) {
+    private function isValidOrFail(string $title)
+    {
 
         if (strlen($title) < self::MIN_CHARACTERS) {
             throw new \DomainException("title should have a minimum of " . self::MIN_CHARACTERS . " characters.");

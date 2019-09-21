@@ -3,9 +3,10 @@
 namespace Recluit\Postulation\Infraestructure\Http\Controllers;
 
 use Recluit\Common\Infraestructure\Http\Controller\Base\Controller;
+use Recluit\Common\Uuid\UUID;
 use Recluit\Postulation\Application\Requests\CreatePostulationRequest;
 use Recluit\Postulation\Application\Services\CreatePostulationService;
-use Recluit\Postulation\Infraestructure\Persistence\Repositories\FakePostulationRepository;
+use Recluit\Postulation\Infraestructure\Persistence\Repositories\EloquentPostulationRepository;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
@@ -21,15 +22,17 @@ class CreatePostulationController extends Controller
             ]);
         }
 
+        $postulationId = UUID::generate();
         $title = $body['title'];
+        $ownerId = $request->getAttribute("user")->id;
 
-        $service = new CreatePostulationService(new FakePostulationRepository());
+        $service = new CreatePostulationService(new EloquentPostulationRepository());
         try {
-            $service->execute(new CreatePostulationRequest($title));
+            $service->execute(new CreatePostulationRequest($postulationId, $title, $ownerId));
             return $response->withJson([
                 "message" => "Postulation created successfully."
             ]);
-        } catch (\DomainException $exception){
+        } catch (\DomainException $exception) {
             return $response->withJson([
                 "error" => $exception->getMessage()
             ]);

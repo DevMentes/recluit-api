@@ -2,10 +2,10 @@
 
 namespace Recluit\Security\Application\Services;
 
+use Recluit\Security\Application\Requests\SignInUserRequest;
 use Recluit\Security\Domain\Entities\PublicUser;
 use Recluit\Security\Domain\Entities\User;
 use Recluit\Security\Domain\Repositories\UserRepository;
-use Recluit\Security\Application\Requests\SignInUserRequest;
 
 class SignInUserService
 {

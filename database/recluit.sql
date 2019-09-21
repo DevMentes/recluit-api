@@ -1,8 +1,24 @@
 CREATE TABLE "users" (
-	"id" varchar(36) NOT NULL,
-	"email" varchar(40) NOT NULL UNIQUE,
-	"password" varchar(300) NOT NULL,
-	CONSTRAINT users_pk PRIMARY KEY ("id")
-) WITH (
-  OIDS=FALSE
+  "id" varchar,
+  "email" varchar,
+  "password" varchar
 );
+
+CREATE TABLE "postulations" (
+  "id" varchar,
+  "title" varchar,
+  "created_by" varchar
+);
+
+CREATE TABLE "applicants" (
+  "id" varchar,
+  "name" varchar,
+  "surname" varchar,
+  "email" varchar,
+  "resume" varchar,
+  "postulation_id" varchar
+);
+
+ALTER TABLE "postulations" ADD FOREIGN KEY ("created_by") REFERENCES "users" ("id");
+
+ALTER TABLE "applicants" ADD FOREIGN KEY ("postulation_id") REFERENCES "postulations" ("id");
