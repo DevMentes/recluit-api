@@ -2,6 +2,8 @@
 
 namespace Recluit\Common\Infraestructure\Http\Controller\Base;
 
+use Slim\Http\Request;
+
 class Controller
 {
 
@@ -20,4 +22,8 @@ class Controller
         }
     }
 
+    public function getAuthUserFromRequest(Request $request)
+    {
+        return $request->getAttribute("user");
+    }
 }

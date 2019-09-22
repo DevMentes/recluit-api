@@ -2,6 +2,8 @@
 
 namespace Recluit\Postulation\Domain\Postulation;
 
+use Recluit\Postulation\Domain\Postulant\Postulant;
+
 class Postulation
 {
     private $id;
@@ -30,5 +32,10 @@ class Postulation
     public function createdBy(): string
     {
         return $this->createdBy;
+    }
+
+    public function addPostulant(Postulant $postulant): void
+    {
+        //TODO add postulant here
     }
 }

@@ -24,7 +24,7 @@ class CreatePostulationController extends Controller
 
         $postulationId = UUID::generate();
         $title = $body['title'];
-        $ownerId = $request->getAttribute("user")->id;
+        $ownerId = $this->getAuthUserFromRequest($request)->id;
 
         $service = new CreatePostulationService(new EloquentPostulationRepository());
         try {
