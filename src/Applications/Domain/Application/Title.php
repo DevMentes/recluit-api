@@ -1,6 +1,6 @@
 <?php
 
-namespace Recluit\Postulation\Domain\Postulation;
+namespace Recluit\Applications\Domain\Application;
 
 class Title
 {

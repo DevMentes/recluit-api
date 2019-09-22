@@ -1,8 +1,8 @@
 <?php
 
-namespace Recluit\Postulation\Domain\Postulant;
+namespace Recluit\Applications\Domain\Applicant;
 
-class Postulant
+class Applicant
 {
 
     private $id;

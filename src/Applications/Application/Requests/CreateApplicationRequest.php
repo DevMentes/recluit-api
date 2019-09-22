@@ -1,8 +1,8 @@
 <?php
 
-namespace Recluit\Postulation\Application\Requests;
+namespace Recluit\Applications\Application\Requests;
 
-class CreatePostulationRequest
+class CreateApplicationRequest
 {
     private $id;
 

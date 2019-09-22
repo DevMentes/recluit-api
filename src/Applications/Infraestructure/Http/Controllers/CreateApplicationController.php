@@ -1,16 +1,16 @@
 <?php
 
-namespace Recluit\Postulation\Infraestructure\Http\Controllers;
+namespace Recluit\Applications\Infraestructure\Http\Controllers;
 
 use Recluit\Common\Infraestructure\Http\Controller\Base\Controller;
 use Recluit\Common\Uuid\UUID;
-use Recluit\Postulation\Application\Requests\CreatePostulationRequest;
-use Recluit\Postulation\Application\Services\CreatePostulationService;
-use Recluit\Postulation\Infraestructure\Persistence\Repositories\EloquentPostulationRepository;
+use Recluit\Applications\Application\Requests\CreateApplicationRequest;
+use Recluit\Applications\Application\Services\CreateApplicationService;
+use Recluit\Applications\Infraestructure\Persistence\Repositories\EloquentApplicationRepository;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-class CreatePostulationController extends Controller
+class CreateApplicationController extends Controller
 {
     public function create(Request $request, Response $response)
     {
@@ -22,15 +22,15 @@ class CreatePostulationController extends Controller
             ]);
         }
 
-        $postulationId = UUID::generate();
+        $applicationId = UUID::generate();
         $title = $body['title'];
         $ownerId = $this->getAuthUserFromRequest($request)->id;
 
-        $service = new CreatePostulationService(new EloquentPostulationRepository());
+        $service = new CreateApplicationService(new EloquentApplicationRepository());
         try {
-            $service->execute(new CreatePostulationRequest($postulationId, $title, $ownerId));
+            $service->execute(new CreateApplicationRequest($applicationId, $title, $ownerId));
             return $response->withJson([
-                "message" => "Postulation created successfully."
+                "message" => "Applications created successfully."
             ]);
         } catch (\DomainException $exception) {
             return $response->withJson([
