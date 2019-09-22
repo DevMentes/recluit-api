@@ -46,7 +46,7 @@ class Postulant
 
     public function hasResume(): bool
     {
-        return strlen($this->resume)>0? true : false;
+        return strlen($this->resume) > 0 ? true : false;
     }
 
     public function addResume(string $resume): void

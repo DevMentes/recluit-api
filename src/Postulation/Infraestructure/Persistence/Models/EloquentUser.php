@@ -11,6 +11,6 @@ class EloquentUser extends Model
 
     public function postulations()
     {
-        return $this->hasMany(EloquentPostulations::class, "created_by", "id");
+        return $this->hasMany(EloquentPostulation::class, "created_by", "id");
     }
 }

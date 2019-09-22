@@ -12,6 +12,8 @@ class Postulation
 
     private $createdBy;
 
+    private $postulants = [];
+
     public function __construct(string $id, Title $title, string $createdBy)
     {
         $this->id = $id;
@@ -34,8 +36,30 @@ class Postulation
         return $this->createdBy;
     }
 
-    public function addPostulant(Postulant $postulant): void
+    public function addPostulant(Postulant $newPostulant): void
     {
-        //TODO add postulant here
+        if ($this->postulantExists($newPostulant)) {
+            throw new \DomainException("Provided postulant already exists on postulation.");
+        }
+        $this->postulants [] = $newPostulant;
+    }
+
+    /**
+     * @param Postulant $newPostulant
+     * @return bool
+     */
+    public function postulantExists(Postulant $newPostulant): bool
+    {
+        foreach ($this->postulants as $postulant) {
+            if ($postulant->id() === $newPostulant->id()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function postulants(): array
+    {
+        return $this->postulants;
     }
 }
